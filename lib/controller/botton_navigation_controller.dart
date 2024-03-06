@@ -15,6 +15,6 @@ class BottomNavController extends ChangeNotifier{
   List<Widget> myPages= [
     HomeScreen(),
     SearchScreen(),
-    CategoryScreen(),
+    UserScreen(),
   ];
 }

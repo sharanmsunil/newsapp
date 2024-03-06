@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/controller/botton_navigation_controller.dart';
+import 'package:newsapp/controller/catagory_controller.dart';
 import 'package:newsapp/controller/homescreencontroller.dart';
 import 'package:newsapp/controller/news_splash_controller.dart';
 import 'package:newsapp/view/splash_screen/news_splash.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => SplashController()),
           ChangeNotifierProvider(create: (context) => BottomNavController()),
           ChangeNotifierProvider(create: (context) => HomeScreenController()),
+          ChangeNotifierProvider(create: (context) => CategoryController()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

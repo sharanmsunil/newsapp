@@ -36,38 +36,6 @@ class HomeScreen extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Expanded(
-                        //   child: SizedBox(
-                        //     height: 350,
-                        //     child: ListView.builder(
-                        //         shrinkWrap: true,
-                        //         physics: ScrollPhysics(),
-                        //         scrollDirection: Axis.horizontal,
-                        //         itemCount: provider.newsModel.articles?.length ?? 0,
-                        //         itemBuilder: (context, index) {
-                        //           return HighlightNews(title: provider.newsModel.articles?[index].title
-                        //               .toString() ?? "",
-                        //               description: provider.newsModel.articles?[index].description
-                        //                   .toString() ?? "",
-                        //               date: provider.newsModel.articles?[index].publishedAt,
-                        //               imageUrl: provider
-                        //                   .newsModel.articles?[index].urlToImage
-                        //                   .toString() ??
-                        //                   "",
-                        //               content: provider.newsModel.articles?[index].content
-                        //                   .toString() ??
-                        //                   "",
-                        //               sourceName: provider
-                        //                   .newsModel.articles?[index].source?.name
-                        //                   .toString() ??
-                        //                   "",
-                        //               url:  provider.newsModel.articles?[index].url
-                        //                   .toString() ??
-                        //                   "");
-                        //         }
-                        //     ),
-                        //   ),
-                        // ),
                         Expanded(
                           child: SizedBox(
                             height: 350,
@@ -93,18 +61,20 @@ class HomeScreen extends StatelessWidget {
                                                     "");
                             }, options:  CarouselOptions(
                               height: 400,
-                              aspectRatio: 16/9,
-                              viewportFraction: 1,
+                              aspectRatio: 18/9,
+                              viewportFraction: .98,
                               initialPage: 0,
                               enableInfiniteScroll: true,
                               reverse: false,
                               autoPlay: true,
-                              autoPlayInterval: Duration(seconds: 3),
+                              autoPlayInterval: Duration(seconds: 5),
                               autoPlayAnimationDuration: Duration(milliseconds: 800),
                               autoPlayCurve: Curves.fastOutSlowIn,
                               enlargeCenterPage: true,
                               enlargeFactor: 0.3,
                               scrollDirection: Axis.horizontal,
+                              enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                              padEnds: true,
                             ))
                           ),
                         ),
@@ -117,9 +87,9 @@ class HomeScreen extends StatelessWidget {
                                 GreyFont(text: "More",size: 15,color: Colors.grey.shade700,)
                               ],
                             )),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20,left: 10,right: 10),
-                          child: Expanded(
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 20,left: 10,right: 10),
                             child: SizedBox(
                               height: 300,
                               child: ListView.builder(
@@ -160,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                     Positioned(
                         top: 50,
                         left: 10,
-                        child: Icon(Icons.menu,color: NewsColors.bgColor,))
+                        child: Icon(Icons.menu,color: NewsColors.textLightGreyColor,))
                   ],
                 ),
               );

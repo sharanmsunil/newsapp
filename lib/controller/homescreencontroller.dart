@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreenController extends ChangeNotifier{
-  late NewsModel newsModel;
+  late TopHeadline newsModel;
   bool isLoading = false;
 
   //to process api and get response
@@ -15,7 +15,7 @@ class HomeScreenController extends ChangeNotifier{
   fetchData() async{
     isLoading = true;
     // notifyListeners();
-    final url = "$baseUrl//v2/everything?q=bitcoin&apiKey=e35f794353a04804935b64fa15514e8e";
+    final url = "$baseUrl/v2/top-headlines?country=in&apiKey=98542493c0fd4dfa8309c4fe51c7dae4";
     final response = await http.get(Uri.parse(url));
     print(response.statusCode);
     Map<String,dynamic> decodeData={};
@@ -24,7 +24,7 @@ class HomeScreenController extends ChangeNotifier{
     }else{
       print('api failed');
     }
-    newsModel=NewsModel.fromJson(decodeData);
+    newsModel=TopHeadline.fromJson(decodeData);
     isLoading=false;
     notifyListeners();
 
