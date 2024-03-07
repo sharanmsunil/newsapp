@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/controller/catagory_controller.dart';
+import 'package:newsapp/controller/search_screen_controller.dart';
 import 'package:newsapp/view/widgets/blackfont.dart';
+import 'package:newsapp/view/widgets/greyfont.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/catagory.dart';
@@ -15,6 +17,8 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     fetchData(context);
+    TextEditingController textController = TextEditingController();
+    SearchScreenController provider1 = Provider.of<SearchScreenController>(context);
     return Scaffold(
       body: Consumer<CategoryController>(
         builder:
@@ -38,8 +42,71 @@ class SearchScreen extends StatelessWidget {
                         color: Colors.black,
                       ),
                       flexibleSpace: FlexibleSpaceBar(
-                        titlePadding: EdgeInsets.only(bottom: 80, left: 20),
+                        titlePadding: EdgeInsets.only(bottom: 120, left: 20),
                         title: BlackFont(text: "Discover",size: 25,),
+                        background: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 170,),
+                            Container(
+                              margin: EdgeInsets.only(left: 20,right: 20),
+                              child: GreyFont(text: 'News from all over the world')
+                            ),
+                            SizedBox(height: 10,),
+                            Container(
+                              height: 50,
+                              width: MediaQuery.of(context).size.width,
+                              child: Center(
+                                child: Container(
+                                  height: 120,
+                                  width: MediaQuery.of(context).size.width,
+                                  margin: EdgeInsets.only(left: 20,right: 20),
+                                  child: TextField(
+                                    controller: textController,
+                                    textAlign: TextAlign.left,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(color: Colors.grey.shade300,width: 1,)
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide: BorderSide(color: Colors.grey.shade300,width: 1,)
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide: BorderSide(color: Colors.grey.shade300,width: 1,)
+                                      ),
+                                      hintText: 'Search',
+                                      helperStyle: TextStyle(color: Colors.grey),
+                                      prefixIcon: Padding(
+                                        padding: EdgeInsets.fromLTRB(9, 6, 9, 6),
+                                        child: Icon(Icons.search,color: Colors.grey,),
+                                      ),
+                                      filled: true,
+                                      fillColor: Colors.grey.shade300,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // Expanded(
+                            //   child: ElevatedButton(
+                            //     onPressed: () {
+                            //       provider1.searchData(searchText: textController.text.toLowerCase());
+                            //       FocusManager.instance.primaryFocus?.unfocus();
+                            //     },
+                            //     style: const ButtonStyle(
+                            //         backgroundColor:
+                            //         MaterialStatePropertyAll(Color(0xff6A3DE8))),
+                            //     child: const Text(
+                            //       "Search",
+                            //       style: TextStyle(color: Colors.white),
+                            //     ),
+                            //   ),
+                            // )
+                          ],
+                        ),
                       ),
                       bottom: TabBar(
                         isScrollable: true,

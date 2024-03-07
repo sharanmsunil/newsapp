@@ -7,6 +7,8 @@ import 'package:newsapp/view/splash_screen/news_splash.dart';
 import 'package:newsapp/view/bottomnavbar/newshome.dart';
 import 'package:provider/provider.dart';
 
+import 'controller/search_screen_controller.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => BottomNavController()),
           ChangeNotifierProvider(create: (context) => HomeScreenController()),
           ChangeNotifierProvider(create: (context) => CategoryController()),
+          ChangeNotifierProvider(create: (context) => SearchScreenController()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
